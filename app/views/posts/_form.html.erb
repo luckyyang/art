@@ -1,0 +1,10 @@
+<%= form_for(@post) do |f| %>
+  <% if !@post.valid? %>
+    <div class = 'alert alert-error' style="background-color:red; text-align:left; font-size:22px; padding: 30px;">
+      <%= @post.errors.full_messages.join('<br/>').html_safe %>
+    </div>
+  <% end %>
+
+  <%= f.text_field :title %>
+  <%= f.submit "save!" %>
+<% end %>
