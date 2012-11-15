@@ -1,0 +1,28 @@
+<h2>List all your posts</h2>
+
+<table>
+
+<tr>
+<th>Title</th>
+<th>Content</th>
+<th>Time</th>
+</tr>
+
+<%= @posts.each do |post| %>
+<% end %>
+<% @posts.each do |post| %>
+<tr>
+<td><%= post.title %></td>
+<td><%= post.content %></td>
+<td><%= link_to "Edit", edit_post_path(post) %></td>
+<td><%= link_to "Delete", post, method: :delete, data: {confirm: "are you sure?"} %></td>
+</tr>
+<% end %>
+
+
+</table>
+
+
+<%= link_to "create a post", new_post_path %>
+|
+<%= link_to "still create a post, I just want to add a |", new_post_path %>
