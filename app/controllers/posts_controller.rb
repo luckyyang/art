@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  http_basic_authenticate_with :name => "liujiyang", :password => "jiyangliu", :except => [:index, :show]
   
   def index
     @posts = Post.all
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Update your post successfully' }
+        format.html { redirect_to @post, :notice => 'Update your post successfully' }
         format.json { head :no_content }
       else
         format.html { render :edit }

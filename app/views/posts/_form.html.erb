@@ -1,3 +1,4 @@
+<% @post.tags.build %>
 <%= form_for(@post) do |post_form| %>
   <% if @post.errors.any? %>
     <div class = 'alert alert-error' style="background-color:red; text-align:left; font-size:22px; padding: 30px;">
@@ -15,12 +16,17 @@
   <%= post_form.text_area :content %>
 </div>
 
+<h2>Tags</h2>
+<%= render :partial => 'tags/form',
+           :locals => { :form => post_form } %>
+
+<div>
   <%= post_form.submit "save!" %>
+</div>
 
 <div>
 <%= image_tag "tree.png", :height => 200, :onmouseover => "rails.png" %>
-<%= video_tag "intr.mov", :height => 200, :poster => "tree.png", :autoplay => true, :loop => true,
-                           :controls => true, :autobuffer => true %>
+<%= video_tag "intr.mov", :height => 200, :poster => "tree.png", :autoplay => true, :loop => true, :controls => true, :autobuffer => true %>
 </div>
 <div>
   <%= link_to "back to posts list", posts_path %>
