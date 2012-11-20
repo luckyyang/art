@@ -1,5 +1,16 @@
-Hi, the post title is:
 
-<%= @post.title %>
+<h2>Display your post</h2>
 
+<%= form_for(@post) do |post_form| %>
+  <div>
+    <b>Title:</b><br/><%= @post.title %><br/>
+    <b>Content:</b><br/><%= @post.content %>
+  </div>
+ 
+<br/>
+<br/>
+<br/>
 <%= link_to "edit this post", edit_post_path(@post) %>
+| 
+<%= link_to "list all posts", posts_path %>
+<% end %>

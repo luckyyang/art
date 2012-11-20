@@ -1,15 +1,29 @@
 <%= form_for(@post) do |post_form| %>
-  <% if !@post.valid? %>
+  <% if @post.errors.any? %>
     <div class = 'alert alert-error' style="background-color:red; text-align:left; font-size:22px; padding: 30px;">
       <%= @post.errors.full_messages.join('<br/>').html_safe %>
     </div>
   <% end %>
 
-  <%= post_form.label :title %>
+<div>
+  <%= post_form.label :title %><br/>
   <%= post_form.text_field :title %>
+</div>
 
-  <%= post_form.label :content %>
+<div>
+  <%= post_form.label :content %><br/>
   <%= post_form.text_area :content %>
+</div>
 
   <%= post_form.submit "save!" %>
+
+<div>
+<%= image_tag "tree.png", :height => 200, :onmouseover => "rails.png" %>
+<%= video_tag "intr.mov", :height => 200, :poster => "tree.png", :autoplay => true, :loop => true,
+                           :controls => true, :autobuffer => true %>
+</div>
+<div>
+  <%= link_to "back to posts list", posts_path %>
+</div>
+
 <% end %>

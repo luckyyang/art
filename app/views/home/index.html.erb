@@ -3,3 +3,56 @@
 <%= link_to "list all posts", posts_path %>
 |
 <%= link_to "create a post", new_post_path %>
+
+<%= form_tag("/posts", :method => "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search!") %>
+
+<% end %>
+
+<div>
+<%= check_box_tag(:pet_dog) %>
+<%= label_tag(:pet_dog, "I own a dog") %><br />
+<%= check_box_tag(:pet_cat) %>
+<%= label_tag(:pet_cat, "I own a cat") %>
+</div>
+
+<div>
+<%= radio_button_tag(:pet, "dog") %>
+<%= label_tag(:pet_dog, "I own a dog") %><br />
+<%= radio_button_tag(:pet, "cat") %>
+<%= label_tag(:pet_cat, "I own a cat") %>
+</div>
+
+<br />
+<%= text_area_tag(:message, "Hi, nice site", :size => "24x6") %>
+<br />
+<%= password_field_tag(:password) %>
+<br />
+<%= hidden_field_tag(:parent_id, "5") %>
+<br />
+<%= search_field(:user, :name) %>
+<br />
+<%= telephone_field(:user, :phone) %>
+<br />
+<%= url_field(:user, :homepage) %>
+<br />
+<%= email_field(:user, :address) %>
+<br />
+
+<select name="city_id" id="city_id">
+  <option value="3">Lisbon</option>
+  <option value="2">Madrid</option>
+  <option value="12">Berlin</option>
+</select>
+<%= time_zone_select("person", 0) %>
+<br />
+
+<%= select_date Date.today, :prefix => :start_data %>
+<%= date_select :person, :birth_date, :start_year => 1980,  :end_year => 2030 %>
+<%= select_year(2009) %>
+<%= select_year(Time.now) %>
+<input name="person[phone_number][]" type="text"/>
+<input name="person[phone_number][]" type="text"/>
+<input name="person[phone_number][]" type="text"/>
